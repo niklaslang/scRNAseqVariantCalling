@@ -20,7 +20,7 @@ A more detailed flowchart of the whole pipeline is provided below. It p
 
 
 
-##Requirements
+## Requirements
 
 - CellRanger version 2.1.1
 
@@ -34,7 +34,7 @@ A more detailed flowchart of the whole pipeline is provided below. It p
 
 - SSrGE: https://github.com/lanagarmire/SSrGE
 
-##Step by Step
+## Step by Step
 
 ### 1. Alignment
 
