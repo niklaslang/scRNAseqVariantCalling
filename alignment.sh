@@ -9,7 +9,7 @@
 
 module load ngs/cellranger/2.1.1
 
-#perform alignement
+#perform alignment
 
 #nota bene no.1 : memory above (SLURM) is specified in MB, the memory below (CellRanger) is specified in GB!
 
