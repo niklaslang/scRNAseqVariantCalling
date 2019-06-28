@@ -51,15 +51,26 @@ Alignment of the FASTQ Files using CellRanger version 2.1.1
 Splitting BAM files (CellRanger output) into single cell specific BAM files based on barcodes.
 This means one BAM file per cell.
 
-BamCleave identifies cells by the cell barcodes within the BAM file. Since there are far more cell barcodes than actual cells, BAM Cleave asks you to specify the number of cells N in advance. BamCleave then reads through the BAM file to find the N cell barcodes with the most reads and then creates one BAM files for each of those N barcodes.
-Here, we simply use the number of cells estimated by CellRanger (therefore, see the web_summary.html in the CellRanger output folder).
+BamCleave identifies cells by the unique cell barcodes within the BAM file. Since there are far more cell barcodes than actual cells, BAM Cleave asks you to specify the number of cells N in advance. BamCleave then reads through the BAM file to find the N cell barcodes with the most reads and then creates one BAM files for each of those N barcodes.
+Here, we simply use the number of cells estimated by CellRanger (see the web_summary.html in the CellRanger output folder).
 
 
 ### 3. Preprocessing BAM Files
 
 - Picard Toolkit version 2.20.2:  http://broadinstitute.github.io/picard/
 
-Preprocessing the the BAM Files is a far more complex than the previous steps. Hence, this step is subdivided in several substeps. Even though there's no problem in running all these steps from within one script, the steps vary greatly in terms of runtime and memory requirements. Therefore, we provide one short script for each step.
+Preprocessing the the BAM Files is far more complex than the previous steps. Even though there's no problem in running all these steps from within one script, the steps vary greatly in terms of runtime and memory requirements. For this reason, we provide a separate script for each step.
+
+Also, we recommend parallel processing for these (and all of the following) steps.
+We therefore provide two scripts for each step:
+
+- pp_picard_n.sh: looping over all single cell BAM Files in the input folder and executing sc_picard_n.sh once for every single cell specific BAM File
+
+- sc_picard_n.sh: executing the actual Picard tool required for the respective step
+
+All you have to do is to run the pp_picard_n.sh.
+
+In order to ensure that all things run smoothly, you have to make sure that the input files, the mp_picard_n.sh as well as the sc_picard_n.sh are ALL IN THE SAME FOLDER. 
 
 #### 3.1 Picard
 
