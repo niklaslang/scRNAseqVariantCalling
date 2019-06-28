@@ -48,7 +48,8 @@ Alignment of the FASTQ Files using CellRanger version 2.1.1
 
 - BamCleave: https://warwick.ac.uk/fac/sci/systemsbiology/staff/dyer/software/bamcleave/
 
-- script: [BamCleave.sh] (https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/BamCleave.sh)
+- script: [bamCleave.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/bamCleave.sh)
+
 Splitting BAM files (CellRanger output) into single cell specific BAM files based on barcodes.
 This means one BAM file per cell.
 
