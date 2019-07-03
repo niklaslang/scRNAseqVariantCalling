@@ -77,32 +77,34 @@ All you have to do is to run the pp_picard_n.sh since it initiates the parallel 
 
 In order to ensure that everything runs smoothly, you have to MAKE SURE that the input files, the mp_picard_n.sh as well as the sc_picard_n.sh for each steps are ALL IN THE SAME FOLDER.
 
-#### 3.1 Picard
+#### 3.1 Picard AddOrReplaceReadGroups
 
 - parallel processing script: [pp_picard_1.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/pp_picard_1.sh)
 - picard script: [sc_picard_1.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/sc_picard_1.sh)
 
-#### 3.2 Picard
+#### 3.2 Picard MarkDuplicates
 
 - parallel processing script: [pp_picard_2.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/pp_picard_2.sh)
 - picard script: [sc_picard_2.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/sc_picard_2.sh)
 
-#### 3.3 Picard
+#### 3.3 Picard BuildBamIndex
 
 - parallel processing script: [pp_picard_3.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/pp_picard_3.sh)
 - picard script: [sc_picard_3.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/sc_picard_3.sh)
 
-#### 3.4 Picard
+#### 3.4 Picard SortSam
 
 - parallel processing script: [pp_picard_4.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/pp_picard_4.sh)
 - picard script: [sc_picard_4.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/sc_picard_4.sh)
 
-#### 3.5 Picard
+**CAVE:** MAKE SURE pp_picard_4.sh and sc_picard_4.sh ARE IN THE SAME FOLDER as pp_picard_3.sh and sc_picard_3.sh, since they have identical input files.
+
+#### 3.5 Picard CreateSequenceDictionary
 
 - parallel processing script: [pp_picard_5.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/pp_picard_5.sh)
 - picard script: [sc_picard_5.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/sc_picard_5.sh)
 
-#### 3.6 Picard
+#### 3.6 Picard ReorderSam
 
 - parallel processing script: [pp_picard_6.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/pp_picard_6.sh)
 - picard script: [sc_picard_6.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/sc_picard_6.sh)
