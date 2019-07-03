@@ -19,4 +19,4 @@ mkdir $outDir
 
 java -jar /PATH/TO/picard.jar BuildBamIndex \
 I=$inDir/$file \
-TMP_DIR=./picard/
+TMP_DIR=/PATH/TO/tmpDir
