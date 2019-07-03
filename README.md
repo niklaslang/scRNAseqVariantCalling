@@ -79,33 +79,33 @@ In order to ensure that everything runs smoothly, you have to MAKE SURE that the
 
 #### 3.1 Picard
 
-- script: [pp_picard_1.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/pp_picard_1.sh)
-- script: [sc_picard_1.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/sc_picard_1.sh)
+- parallel processing script: [pp_picard_1.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/pp_picard_1.sh)
+- picard script: [sc_picard_1.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/sc_picard_1.sh)
 
 #### 3.2 Picard
 
-- script: [pp_picard_2.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/pp_picard_2.sh)
-- script: [sc_picard_2.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/sc_picard_2.sh)
+- parallel processing script: [pp_picard_2.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/pp_picard_2.sh)
+- picard script: [sc_picard_2.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/sc_picard_2.sh)
 
 #### 3.3 Picard
 
-- script: [pp_picard_3.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/pp_picard_3.sh)
-- script: [sc_picard_3.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/sc_picard_3.sh)
+- parallel processing script: [pp_picard_3.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/pp_picard_3.sh)
+- picard script: [sc_picard_3.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/sc_picard_3.sh)
 
 #### 3.4 Picard
 
-- script: [pp_picard_4.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/pp_picard_4.sh)
-- script: [sc_picard_4.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/sc_picard_4.sh)
+- parallel processing script: [pp_picard_4.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/pp_picard_4.sh)
+- picard script: [sc_picard_4.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/sc_picard_4.sh)
 
 #### 3.5 Picard
 
-- script: [pp_picard_5.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/pp_picard_5.sh)
-- script: [sc_picard_5.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/sc_picard_5.sh)
+- parallel processing script: [pp_picard_5.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/pp_picard_5.sh)
+- picard script: [sc_picard_5.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/sc_picard_5.sh)
 
 #### 3.6 Picard
 
-- script: [pp_picard_6.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/pp_picard_6.sh)
-- script: [sc_picard_6.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/sc_picard_6.sh)
+- parallel processing script: [pp_picard_6.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/pp_picard_6.sh)
+- picard script: [sc_picard_6.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/sc_picard_6.sh)
 
 
 ### 4. Realignment and Recalibration
