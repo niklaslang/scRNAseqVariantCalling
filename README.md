@@ -6,22 +6,24 @@ This pipeline aims to perform variant calling at the single cell level with the 
 
 It consists of four subsequent main steps:
 
-- align reads to a reference transcriptome using CellRanger
+- align reads to a reference transcriptome using CellRanger (step 1)
 
-- split the BAM File into single cell specific BAM Files using bamCleave
+- split the BAM File into single cell specific BAM Files using bamCleave (step 2 and 3)
 
-- perform individual variant calling on each of the single cell specific BAM Files using the Picard Toolkit and GATK
+- perform individual variant calling on each of the single cell specific BAM Files using the Picard Toolkit and GATK (step 5)
 
-- compute a binary n_cell x n_snv matrix using SSrGE
+- compute a binary n_cell x n_snv matrix using SSrGE (step 6)
 
+
+Our pipeline is in large parts based on the GATK Good Practices for Variant Calling in RNAseq, which can be found [here](https://gatkforums.broadinstitute.org/wdl/discussion/3891/calling-variants-in-rnaseq).
+Please note that the GATK Good Practices haven't been updated since 01/2017 and that there might be more recent and/or more accurate SNV Callers for scRNAseq datasets. We therefore strongly recommend you to keep an eye on new developments/tools in the field in order to ensure you receive the best results possible.
+Further, we are well aware of the limitations of calling Variants from 10X reads (10X uses polyA enrichment - as a result of this you will be mainly sequencing around the Target Enrichment Site (TES), which limits the significance of you findings). However, our focus was not to obtain every single significant SNVs, but rather to obtain some cell specific SNVs which could prove useful for further analysis (such as clustering or determining tumor heterogeneity).
 
 ## Requirements
 
 - CellRanger version 2.1.1
 
 - BamCleave: https://warwick.ac.uk/fac/sci/systemsbiology/staff/dyer/software/bamcleave/
-
-- featureCounts (included in the subread package): http://subread.sourceforge.net/
 
 - Picard Toolkit version 2.20.2:  http://broadinstitute.github.io/picard/
 
@@ -70,7 +72,7 @@ We therefore provide two scripts for each step:
 
 All you have to do is to run the pp_picard_n.sh.
 
-In order to ensure that all things run smoothly, you have to make sure that the input files, the mp_picard_n.sh as well as the sc_picard_n.sh are ALL IN THE SAME FOLDER. 
+In order to ensure that all things run smoothly, you have to make sure that the input files, the mp_picard_n.sh as well as the sc_picard_n.sh are ALL IN THE SAME FOLDER.
 
 #### 3.1 Picard
 
@@ -91,14 +93,14 @@ In order to ensure that all things run smoothly, you have to make sure that the 
 
 - GATK version 3.8: https://software.broadinstitute.org/gatk/
 
-**CAVE:** make sure you work with GATK version 3.8 since there are substantial syntax differences between version 3.x and 4.x.
+**CAVE:** make sure you work with GATK version 3.8 since there are substantial syntax differences between versions 3.x and 4.x.
 
 
 ### 5. Variant Calling
 
 - GATK version 3.8: https://software.broadinstitute.org/gatk/
 
-**CAVE:** make sure you work with GATK version 3.8 since there are substantial syntax differences between version 3.x and 4.x.
+**CAVE:** make sure you work with GATK version 3.8 since there are substantial syntax differences between versions 3.x and 4.x.
 
 
 ### 6. Computing n_cell x n_snv matrix
