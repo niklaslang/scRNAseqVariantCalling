@@ -44,7 +44,9 @@ Further, we are well aware of the limitations of calling variants from 10X reads
 
 Alignment of the FASTQ Files using CellRanger version 2.1.1
 
-**CAVE:**
+**CAVE:** Before starting the Alignment you should carefully decide which annotation of the reference genome/transcriptome (Ensembl, NCBI or UCSC) you choose since the number and quality of publicly available VCF Files, which are compatible with them, varies greatly among them.
+Here, we use GRCh38 (NCBI) with the [variation sets provided by the NCBI](ftp://ftp.ncbi.nih.gov/snp/organisms/human_9606/VCF/)
+GATK, however, recommends to you to use the Mills indels or 1KG indels variation sets, which are available through the [GATK Resource Bundle](https://software.broadinstitute.org/gatk/download/bundle) - but only for builds b36, b37, hg18, hg19 and hg38.
 
 
 ### 2. Splitting BAM Files
@@ -101,7 +103,6 @@ In order to ensure that everything runs smoothly, you have to MAKE SURE that the
 
 #### 3.5 Picard CreateSequenceDictionary
 
-- parallel processing script: [pp_picard_5.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/pp_picard_5.sh)
 - picard script: [sc_picard_5.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/sc_picard_5.sh)
 
 #### 3.6 Picard ReorderSam
