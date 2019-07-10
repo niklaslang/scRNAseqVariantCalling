@@ -128,6 +128,8 @@ We provide additional code for downloading and indexing the reference genome (GR
 
 **CAVE:** make sure you work with GATK version 3.8 since there are substantial syntax changes between versions 3.x and 4.x!
 
+The following steps vary greatly in terms of runtime and memory requirements. THE memory parameter specified at the very beginning of each script you provide you with a glimpse idea of the memory dimensions required for the respective steps.
+
 Analog to step 3, we provide recommend parallel propcessing for these (and all of the following) steps and provide two scripts, pp_gatk_n.sh and sc_gatk_n.sh, for each of the n steps.
 
 Again, you have to MAKE SURE that the input files, the pp_picard_n.sh as well as the sc_picard_n.sh for each step are ALL IN THE SAME FOLDER.
@@ -168,6 +170,15 @@ Again, you have to MAKE SURE that the input files, the pp_picard_n.sh as well as
 
 **CAVE:** make sure you work with GATK version 3.8 since there are substantial syntax changes between versions 3.x and 4.x!
 
+#### 5.1 HaplotypeCaller
+
+- parallel processing script:[pp_gatk_6.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/pp_gatk_6.sh)
+- gatk script: [sc_gatk_6.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/sc_gatk_6.sh)
+
+#### 5.2
+
+- parallel processing script:[pp_gatk_7.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/pp_gatk_7.sh)
+- gatk script: [sc_gatk_7.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/sc_gatk_7.sh)
 
 ### 6. Computing n_cell x n_snv matrix
 
