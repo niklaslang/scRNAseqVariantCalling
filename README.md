@@ -82,7 +82,7 @@ We therefore provide two scripts for each step:
 
 All you have to do is to run the pp_picard_n.sh since it initiates the parallel processing of all BAM Files
 
-In order to ensure that everything runs smoothly, you have to MAKE SURE that the input files, the mp_picard_n.sh as well as the sc_picard_n.sh for each steps are ALL IN THE SAME FOLDER.
+In order to ensure that everything runs smoothly, you have to MAKE SURE that the input files, the pp_picard_n.sh as well as the sc_picard_n.sh for each step are ALL IN THE SAME FOLDER.
 
 #### 3.1 Picard AddOrReplaceReadGroups
 
@@ -128,6 +128,14 @@ We provide additional code for downloading and indexing the reference genome (GR
 
 **CAVE:** make sure you work with GATK version 3.8 since there are substantial syntax changes between versions 3.x and 4.x!
 
+Analog to step 3, we provide recommend parallel propcessing for these (and all of the following) steps and provide two scripts, pp_gatk_n.sh and sc_gatk_n.sh, for each of the n steps.
+
+Again, you have to MAKE SURE that the input files, the pp_picard_n.sh as well as the sc_picard_n.sh for each step are ALL IN THE SAME FOLDER.
+
+### 4.1 SplitNCigarReads
+
+- parallel processing script:[pp_gatk_1.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/pp_gatk_1.sh)
+- gatk script: [sc_gatk_1.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/sc_gatk_1.sh)
 
 ### 5. Variant Calling
 
