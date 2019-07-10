@@ -7,7 +7,7 @@
 
 module load Anaconda3/4.3.1
 
-#presets
+#presets paths
 
 inDir=/PATH/TO/results/picard/picard_6
 
@@ -17,7 +17,7 @@ mkdir $outDir
 
 refDir=/PATH/TO/data/reference_genome/Homo_sapiens.GRCh38.dna.primary_assembly.fa
 
-#pre-gatk - SplitNCigarReads
+#gatk 1 - SplitNCigarReads
 
 java -jar /PATH/TO/gatk3.8/GenomeAnalysisTK.jar \
    -T SplitNCigarReads \
