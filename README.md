@@ -28,6 +28,8 @@ Further, we are well aware of the limitations of calling variants from 10X reads
 
 - Picard Toolkit version 2.20.2:  http://broadinstitute.github.io/picard/
 
+- samtools version 1.9: https://github.com/samtools/
+
 - GATK version 3.8: https://software.broadinstitute.org/gatk/
 
 - SSrGE: https://github.com/lanagarmire/SSrGE
@@ -110,7 +112,7 @@ In order to ensure that everything runs smoothly, you have to MAKE SURE that the
 
 This step does not build upon the previous steps. Its output, the sequence dictionary, is required as input for the next step ReorderSam. Hence, we suggest to create the sequence dictionary between at this point.
 
-We provide additional code for downloading and indexing the reference genome. These steps are only necessary, if
+We provide additional code for downloading and indexing the reference genome (GRCh38). These steps are only necessary, if
 
 - you cannot write to the path of the reference genome (FASTA File and sequence dictionary must be located in the same folder!)
 - your reference genome is not indexed yet
