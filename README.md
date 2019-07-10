@@ -149,6 +149,19 @@ Again, you have to MAKE SURE that the input files, the pp_picard_n.sh as well as
 
 **CAVE:** MAKE SURE pp_gatk_3.sh and sc_gatk_3.sh ARE IN THE SAME FOLDER as pp_gatk_2.sh and sc_gatk_2.sh, since they have identical input files.
 
+#### 4.4 BaseRecalibrator
+
+- parallel processing script:[pp_gatk_4.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/pp_gatk_4.sh)
+- gatk script: [sc_gatk_4.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/sc_gatk_4.sh)
+
+
+#### 4.5 PrintReads
+
+ - parallel processing script:[pp_gatk_5.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/pp_gatk_5.sh)
+ - gatk script: [sc_gatk_5.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/sc_gatk_5.sh)
+
+**CAVE:** MAKE SURE pp_gatk_5.sh and sc_gatk_5.sh ARE IN THE SAME FOLDER as pp_gatk_4.sh and sc_gatk_4.sh, since they have identical input files.
+
 ### 5. Variant Calling
 
 - GATK version 3.8: https://software.broadinstitute.org/gatk/
