@@ -13,7 +13,7 @@ outDir=/PATH/TO/results/picard/picard_6
 
 mkdir $outDir
 
-fastaDir=/PATH/TO/reference_genome/Homo_sapiens.GRCh38.dna.primary_assembly.fa
+fastaDir=/PATH/TO/data/reference_genome/Homo_sapiens.GRCh38.dna.primary_assembly.fa
 
 #picard 6 - ReorderSam
 
