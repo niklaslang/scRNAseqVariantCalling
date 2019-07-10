@@ -132,10 +132,22 @@ Analog to step 3, we provide recommend parallel propcessing for these (and all o
 
 Again, you have to MAKE SURE that the input files, the pp_picard_n.sh as well as the sc_picard_n.sh for each step are ALL IN THE SAME FOLDER.
 
-### 4.1 SplitNCigarReads
+#### 4.1 SplitNCigarReads
 
 - parallel processing script:[pp_gatk_1.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/pp_gatk_1.sh)
 - gatk script: [sc_gatk_1.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/sc_gatk_1.sh)
+
+#### 4.2 RealignerTargetCreator
+
+- parallel processing script:[pp_gatk_2.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/pp_gatk_2.sh)
+- gatk script: [sc_gatk_2.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/sc_gatk_2.sh)
+
+#### 4.3 IndelRealigner
+
+- parallel processing script:[pp_gatk_3.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/pp_gatk_3.sh)
+- gatk script: [sc_gatk_3.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/sc_gatk_3.sh)
+
+**CAVE:** MAKE SURE pp_gatk_3.sh and sc_gatk_3.sh ARE IN THE SAME FOLDER as pp_gatk_2.sh and sc_gatk_2.sh, since they have identical input files.
 
 ### 5. Variant Calling
 
