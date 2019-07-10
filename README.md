@@ -175,7 +175,7 @@ Again, you have to MAKE SURE that the input files, the pp_picard_n.sh as well as
 - parallel processing script:[pp_gatk_6.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/pp_gatk_6.sh)
 - gatk script: [sc_gatk_6.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/sc_gatk_6.sh)
 
-#### 5.2
+#### 5.2 VariantFiltration
 
 - parallel processing script:[pp_gatk_7.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/pp_gatk_7.sh)
 - gatk script: [sc_gatk_7.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/sc_gatk_7.sh)
