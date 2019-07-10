@@ -9,15 +9,11 @@
 
 fastaDir=/PATH/TO/data/reference_genome/Homo_sapiens.GRCh38.dna.primary_assembly.fa
 
-dictDir=/PATH/TO/data/reference_genome/Homo_sapiens.GRCh38.dict
-
-mkDir $dictDir
+dictDir=/PATH/TO/data/reference_genome/
 
 #download FASTA File
 
-cd $dictDir
-
-wget -c ftp://ftp.ensembl.org/pub/release-96/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
+wget -P $dictDir ftp://ftp.ensembl.org/pub/release-96/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
 
 gunzip Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
 
@@ -33,4 +29,4 @@ samtools faidx $fastaDir
 
 java -jar /PATH/TO/picard.jar CreateSequenceDictionary \
 R=$fastaDir \
-O=$dictDir \
+O=$dictDir/Homo_sapiens.GRCh38.dict \
