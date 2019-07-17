@@ -85,8 +85,7 @@ In order to ensure that everything runs smoothly, you have to MAKE SURE that the
 
 Please note, that each cell must have a distinct GE expression profile file with a unique name (e.g. counts.txt) inside a unique folder, specific of the cell. Hence, we create a new unique folder for every input file in the featureCounts script.
 
-The GE expression profiles computed in this step are not required for steps 4 - 6. However, they required as input for step 7.
-
+The GE expression profiles computed in this step are not required for steps 4 - 6. However, they are required as input for step 7.
 
 ### 4. Preprocessing BAM Files
 
@@ -209,3 +208,5 @@ Please note, that each cell must have a distinct .vcf file with a unique name (e
 ### 7. Computing n_cell x n_snv matrix
 
 - SSrGE: https://github.com/lanagarmire/SSrGE
+
+As specified above, please note, that each cell must have a distinct .vcf file with a unique name (e.g. snv_filtered.vcf) inside a unique folder, specific of the cell. Analogous, each cell must have a distinct GE expression profile file with a unique name (e.g. counts.txt) inside a unique folder, specific of the cell.
