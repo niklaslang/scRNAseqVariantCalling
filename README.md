@@ -210,3 +210,5 @@ Please note, that each cell must have a distinct .vcf file with a unique name (e
 - SSrGE: https://github.com/lanagarmire/SSrGE
 
 As specified above, please note, that each cell must have a distinct .vcf file with a unique name (e.g. snv_filtered.vcf) inside a unique folder, specific of the cell. Analogous, each cell must have a distinct GE expression profile file with a unique name (e.g. counts.txt) inside a unique folder, specific of the cell.
+
+Also, you have to specify the path and file name variables of the GE profiles and the VCF Files in the config file: garmire_SSrGE/config.py.
