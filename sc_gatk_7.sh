@@ -9,6 +9,8 @@ module load Anaconda3/4.3.1
 
 #preset paths
 
+#please note, each cell must have a distinct .vcf file with a unique name (e.g. snv_filtered.vcf) inside a unique folder, specific of the cell. Hence we create a new unique folder for every input file
+
 inDir=/PATH/TO/results/gatk/gatk_6
 
 outDir=/PATH/TO/results/gatk/gatk_7/$file
