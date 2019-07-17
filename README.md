@@ -32,6 +32,8 @@ Further, we are well aware of the limitations of calling variants from 10X reads
 
 - GATK version 3.8: https://software.broadinstitute.org/gatk/
 
+- featureCounts (included in the subread package): http://bioinf.wehi.edu.au/featureCounts/
+
 - SSrGE: https://github.com/lanagarmire/SSrGE
 
 
@@ -66,8 +68,27 @@ This means one BAM file per cell.
 BamCleave identifies cells by the unique cell barcodes within the BAM file. Since there are far more cell barcodes than actual cells, BAM Cleave asks you to specify the number of cells N in advance. BamCleave then reads through the BAM file to find the N cell barcodes with the most reads and then creates one BAM file for each of those N barcodes.
 Here, we simply use the number of cells estimated by CellRanger (see the web_summary.html in the CellRanger output folder).
 
+### 3. Computing Gene Expression matrix
 
-### 3. Preprocessing BAM Files
+We recommend parallel processing for these (and all of the following) steps and therefore provide two scripts for each step:
+
+- pp_featureCounts.sh: looping over all single cell BAM Files in the input folder and executing sc_featureCounts.sh once for every single cell specific BAM File
+
+- sc_featureCounts.sh: computing the GE profile for each cell
+
+All you have to do is to run the pp_featureCounts.sh since it initiates the parallel processing of all BAM Files
+
+In order to ensure that everything runs smoothly, you have to MAKE SURE that the input files, the pp_featureCounts.sh as well as the sc_featureCounts.sh for each step are ALL IN THE SAME FOLDER.
+
+- parallel processing script: [pp_featureCounts.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/pp_featureCounts.sh)
+- picard script: [sc_featureCounts.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/sc_featureCounts.sh)
+
+Please note, that each cell must have a distinct GE expression profile file with a unique name (e.g. counts.txt) inside a unique folder, specific of the cell. Hence, we create a new unique folder for every input file in the featureCounts script.
+
+The GE expression profiles computed in this step are not required for steps 4 - 6. However, they required as input for step 7.
+
+
+### 4. Preprocessing BAM Files
 
 - Picard Toolkit version 2.20.2:  http://broadinstitute.github.io/picard/
 
@@ -84,29 +105,32 @@ All you have to do is to run the pp_picard_n.sh since it initiates the parallel 
 
 In order to ensure that everything runs smoothly, you have to MAKE SURE that the input files, the pp_picard_n.sh as well as the sc_picard_n.sh for each step are ALL IN THE SAME FOLDER.
 
-#### 3.1 Picard AddOrReplaceReadGroups
+#### 4.1 Picard AddOrReplaceReadGroups
 
 - parallel processing script: [pp_picard_1.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/pp_picard_1.sh)
 - picard script: [sc_picard_1.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/sc_picard_1.sh)
 
-#### 3.2 Picard MarkDuplicates
+**CAVE:** Please note, that step 3 (Computing the GE matrix) and step 4.1 both use the bamCleave output files and inpuit files.
+These two steps do NOT build upon each other. However, both outputs are required for one ot the the following
+
+#### 4.2 Picard MarkDuplicates
 
 - parallel processing script: [pp_picard_2.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/pp_picard_2.sh)
 - picard script: [sc_picard_2.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/sc_picard_2.sh)
 
-#### 3.3 Picard BuildBamIndex
+#### 4.3 Picard BuildBamIndex
 
 - parallel processing script: [pp_picard_3.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/pp_picard_3.sh)
 - picard script: [sc_picard_3.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/sc_picard_3.sh)
 
-#### 3.4 Picard SortSam
+#### 4.4 Picard SortSam
 
 - parallel processing script: [pp_picard_4.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/pp_picard_4.sh)
 - picard script: [sc_picard_4.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/sc_picard_4.sh)
 
 **CAVE:** MAKE SURE pp_picard_4.sh and sc_picard_4.sh ARE IN THE SAME FOLDER as pp_picard_3.sh and sc_picard_3.sh, since they have identical input files.
 
-#### 3.5 Picard CreateSequenceDictionary
+#### 4.5 Picard CreateSequenceDictionary
 
 - picard script: [sc_picard_5.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/sc_picard_5.sh)
 
@@ -117,12 +141,12 @@ We provide additional code for downloading and indexing the reference genome (GR
 - you cannot write to the path of the reference genome (FASTA File and sequence dictionary must be located in the same folder!)
 - your reference genome is not indexed yet
 
-#### 3.6 Picard ReorderSam
+#### 4.6 Picard ReorderSam
 
 - parallel processing script: [pp_picard_6.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/pp_picard_6.sh)
 - picard script: [sc_picard_6.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/sc_picard_6.sh)
 
-### 4. Realignment and Recalibration
+### 5. Realignment and Recalibration
 
 - GATK version 3.8: https://software.broadinstitute.org/gatk/
 
@@ -134,52 +158,54 @@ Analog to step 3, we provide recommend parallel propcessing for these (and all o
 
 Again, you have to MAKE SURE that the input files, the pp_picard_n.sh as well as the sc_picard_n.sh for each step are ALL IN THE SAME FOLDER.
 
-#### 4.1 SplitNCigarReads
+#### 5.1 SplitNCigarReads
 
 - parallel processing script: [pp_gatk_1.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/pp_gatk_1.sh)
 - gatk script: [sc_gatk_1.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/sc_gatk_1.sh)
 
-#### 4.2 RealignerTargetCreator
+#### 5.2 RealignerTargetCreator
 
 - parallel processing script: [pp_gatk_2.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/pp_gatk_2.sh)
 - gatk script: [sc_gatk_2.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/sc_gatk_2.sh)
 
-#### 4.3 IndelRealigner
+#### 5.3 IndelRealigner
 
 - parallel processing script: [pp_gatk_3.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/pp_gatk_3.sh)
 - gatk script: [sc_gatk_3.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/sc_gatk_3.sh)
 
 **CAVE:** MAKE SURE pp_gatk_3.sh and sc_gatk_3.sh ARE IN THE SAME FOLDER as pp_gatk_2.sh and sc_gatk_2.sh, since they have identical input files.
 
-#### 4.4 BaseRecalibrator
+#### 5.4 BaseRecalibrator
 
 - parallel processing script: [pp_gatk_4.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/pp_gatk_4.sh)
 - gatk script: [sc_gatk_4.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/sc_gatk_4.sh)
 
 
-#### 4.5 PrintReads
+#### 5.5 PrintReads
 
  - parallel processing script: [pp_gatk_5.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/pp_gatk_5.sh)
  - gatk script: [sc_gatk_5.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/sc_gatk_5.sh)
 
 **CAVE:** MAKE SURE pp_gatk_5.sh and sc_gatk_5.sh ARE IN THE SAME FOLDER as pp_gatk_4.sh and sc_gatk_4.sh, since they have identical input files.
 
-### 5. Variant Calling
+### 6. Variant Calling
 
 - GATK version 3.8: https://software.broadinstitute.org/gatk/
 
 **CAVE:** make sure you work with GATK version 3.8 since there are substantial syntax changes between versions 3.x and 4.x!
 
-#### 5.1 HaplotypeCaller
+#### 6.1 HaplotypeCaller
 
 - parallel processing script: [pp_gatk_6.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/pp_gatk_6.sh)
 - gatk script: [sc_gatk_6.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/sc_gatk_6.sh)
 
-#### 5.2 VariantFiltration
+#### 6.2 VariantFiltration
+
+Please note, that each cell must have a distinct .vcf file with a unique name (e.g. snv_filtered.vcf) inside a unique folder, specific of the cell. Hence we create a new unique folder for every input file in the gatk script.
 
 - parallel processing script: [pp_gatk_7.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/pp_gatk_7.sh)
 - gatk script: [sc_gatk_7.sh](https://github.com/niklaslang/scRNAseqVariantCalling/blob/master/sc_gatk_7.sh)
 
-### 6. Computing n_cell x n_snv matrix
+### 7. Computing n_cell x n_snv matrix
 
 - SSrGE: https://github.com/lanagarmire/SSrGE
